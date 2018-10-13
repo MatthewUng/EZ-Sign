@@ -1,0 +1,49 @@
+.header {
+    position: fixed;
+    background: #777;
+    margin-top: -40px;
+    margin-left: -10px;
+    top: 0;
+    width: 102%;
+}
+
+.content{
+    padding: 200px;
+}
+
+@font-face {
+    font-family: Inconsolata;
+    src: url(Inconsolata.woff);
+}
+
+*{
+    font-family: Inconsolata;
+    line-height: 60px;
+}
+
+body {
+    margin-top: 150px;
+    padding: 0;
+}
+
+#button {
+    border-radius: 25px;
+    background: #707070;
+    margin: auto;
+    width: 160px;
+    height: 65px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 70px;
+}
+
+p {
+    font-size: 20px;
+}
+
+a {
+    font-size: 50px;
+    color: Black;
+}
