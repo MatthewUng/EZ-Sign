@@ -1,2 +1,3 @@
-# EZ-Sign
-Easy documents; Easy life
+# eAgree
+
+Make simple agreements official. Powered by DocuSign API.
