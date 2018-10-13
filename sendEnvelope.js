@@ -2,7 +2,7 @@ const express = require('express');
 const docusign = require('docusign-esign');
 const path = require('path');
 const apiClient = new docusign.ApiClient();
-const app = express();
+//const app = express();
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || 'localhost';
 const fs = require('fs');
@@ -33,21 +33,21 @@ const fileName = 'docs/House.pdf'; //IE: test.pdf
 //-------------------------------------------------------------------------------
 
 
-app.listen(port, host, function (err) {
+/*app.listen(port, host, function (err) {
     if (err) {
         return res.send('Error while starting the server:' + err);
     }
 
     console.log('Your server is running on http://' + host + ':' + port + '.');
-});
+});*/
 
-function SendEmail(name, email){
-app.get('/', function (req, res) {
+function SendEmail(name, email, app){
+    app.get('/', function (req, res) {
     apiClient.setBasePath('https://demo.docusign.net/restapi');
     apiClient.addDefaultHeader('Authorization', 'Bearer ' + OAuthToken);
 
     // *** Begin envelope creation ***
-
+	console.log(name + "  " + email);
 
     //Read the file you wish to send from the local machine.
     fileStream = process.argv[2];
@@ -123,6 +123,7 @@ app.get('/', function (req, res) {
     envelopesApi.createEnvelope(accountId, { 'envelopeDefinition': envDef }, function (err, envelopeSummary, response) {
 
         if (err) {
+ 		console.log(response);
             return res.send('Error while sending a DocuSign envelope:' + err);
         }
 
@@ -132,3 +133,4 @@ app.get('/', function (req, res) {
 }); 
 
 }
+module.exports = { SendEmail } ;
