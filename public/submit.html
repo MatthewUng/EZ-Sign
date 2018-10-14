@@ -9,6 +9,9 @@
     $('#agreement').val(text);
   });
 
+  socket.on('SendKey', function(key){
+    $('
+  });
   </script>
 
   <body>
@@ -17,9 +20,21 @@
       <h1 style="text-align:center;margin-bottom: 0px;padding-bottom: 0px;">eAgree</h1>
       <p style="text-align:center; font-size: 30px;margin-top: 0px; padding-top: 0px;margin-bottom: 0px; padding-bottom: 0px;">An official agreement protocol.</p>
     </div>
+    
+    <form style = "text-align:center;font-size: 30px;">
+      
+      <input type = "text" id = "roomKey" placeholder = "office key" name = "name"style="font-size: 30px;">
+      <input type = "submit" onclick = "socket.join( $('#roomKey').val())" value = "join"id="button" style="font-size:
+      20px;width:150px; background: #3498DB;">
+
+    </form>
 
     <form action = "http://127.0.0.1:3000/submit_redirect" method = "POST"
          style = "text-align:center;font-size: 30px;">
+      
+      <h4 value = ""> </h4>
+
+
       <textarea id="agreement" placeholder="Enter an agreement." oninput="socket.emit('update', $('#agreement').val())" rows="10" cols="100"style = "text-align:left;font-size: 20px;"></textarea>
       </br>
       <input type = "text" value = "first name" name = "name"style="font-size: 30px;">  <br>
