@@ -9,7 +9,11 @@
     $('#agreement').val(text);
   });
 
-  socket.on('SendKey', function(key){
+  socket.on('updateEmail', function(text){
+    $('#personalEmail').val(text);
+  });
+
+  socket.on('sendKey', function(key){
     $('
   });
   </script>
@@ -32,13 +36,13 @@
     <form action = "http://127.0.0.1:3000/submit_redirect" method = "POST"
          style = "text-align:center;font-size: 30px;">
       
-      <h4 value = ""> </h4>
-
+      <h4 id = "keyNum"></h4>
+</br> 
 
       <textarea id="agreement" placeholder="Enter an agreement." oninput="socket.emit('update', $('#agreement').val())" rows="10" cols="100"style = "text-align:left;font-size: 20px;"></textarea>
       </br>
       <input type = "text" value = "first name" name = "name"style="font-size: 30px;">  <br>
-      <input type = "text" value = "email" name = "email"style="font-size: 30px;">
+      <input id = "personalEmail" type = "text" value = "email" name = "email"style="font-size: 30px;">
       </br>          
       <input type = "submit" value = "Submit"id="button" style="font-size:
       30px;width:300px; background: #3498DB;">
