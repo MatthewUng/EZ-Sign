@@ -4,6 +4,11 @@
 
   <script>
   var socket = io();
+
+  socket.on('update', function(text){
+    $('#agreement').val(text);
+  });
+
   </script>
 
   <body>
@@ -15,9 +20,7 @@
 
     <form action = "http://127.0.0.1:3000/submit_redirect" method = "POST"
          style = "text-align:center;font-size: 30px;">
-      <textarea id="agreement" placeholder="Enter an agreement." onchange =
-        "socket.emit('update', $('#agreement').val())" rows="10" cols="100"style = "text-align:left;font-size: 20px;">
-      </textarea>
+      <textarea id="agreement" placeholder="Enter an agreement." oninput="socket.emit('update', $('#agreement').val())" rows="10" cols="100"style = "text-align:left;font-size: 20px;"></textarea>
       </br>
       <input type = "text" value = "first name" name = "name"style="font-size: 30px;">  <br>
       <input type = "text" value = "email" name = "email"style="font-size: 30px;">
