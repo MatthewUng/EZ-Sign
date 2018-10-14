@@ -1,37 +1,37 @@
 <html>
-   <body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+  <script>
+  var socket = io();
+  </script>
+
+  <body>
     <link rel="stylesheet" type="text/css" href="style.css">
     <div class="header" id="header">
       <h1 style="text-align:center;margin-bottom: 0px;padding-bottom: 0px;">eAgree</h1>
       <p style="text-align:center; font-size: 30px;margin-top: 0px; padding-top: 0px;margin-bottom: 0px; padding-bottom: 0px;">An official agreement protocol.</p>
     </div>
 
+    <form action = "http://127.0.0.1:3000/submit_redirect" method = "POST"
+         style = "text-align:center;font-size: 30px;">
+      <textarea id="agreement" placeholder="Enter an agreement." onchange =
+        "socket.emit('update', $('#agreement').val())" rows="10" cols="100"style = "text-align:left;font-size: 20px;">
+      </textarea>
+      </br>
+      <input type = "text" value = "first name" name = "name"style="font-size: 30px;">  <br>
+      <input type = "text" value = "email" name = "email"style="font-size: 30px;">
+      </br>          
+      <input type = "submit" value = "Submit"id="button" style="font-size:
+      30px;width:300px; background: #3498DB;">
 
-
-
-<!--
-    </div>
-    <h2 style="text-align:center;font-size: 50px;">What is eAgree?</h1>
-    <p style="text-align:center;">eAgree is a complete, simple utility that streamlines personal and professional agreements with the DocuSign eSignature API.<p>
-    <div id="button" style="width:520px; background: #3498DB;">
-      <a href="submit.html" style="display:block; height:100%; width:100%; text-decoration: none; color: White;">Create an Agreement</a>
-    </div>
-    -->  
-     <form action = "http://127.0.0.1:3000/submit_redirect" method = "POST"
-     style = "text-align:center;font-size: 50px;">
-         First Name: <input type = "text" name = "name">  <br>
-         Email: <input type = "text" name = "email">
-          </br>          
-         <input type = "submit" value = "Submit"id="button" style="font-size: 50px;width:520px; background: #3498DB;">
-
-      </form>
-    </br>
+    </form>
     </br>
     </br>
     <center>
-        powered by,</br>
-    <img src="images/docusign.png" alt="DocuSign Logo" style="width:10%;height:10%;" align="middle">
+      powered by,</br>
+      <img src="images/docusign.png" alt="DocuSign Logo" style="width:10%;height:10%;" align="middle">
     </center>
-      
-   </body>
+
+  </body>
 </html>
