@@ -30,8 +30,10 @@ io.on('connection', function(socket){
     
     time = time.substring(0,7) + time.substring(9) + time.substring(7, 9);
     var key = sha256('' + time);
-    
-    io.to(socket.id).emit('sendKey', key);
+   
+    socket.join(key);
+
+    io.to(key).emit('sendKey', key);
 
     console.log(key);
 
