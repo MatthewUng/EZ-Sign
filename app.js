@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var sendEnvelope = require('./sendEnvelope');
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded( { extended:true}));
-
 app.use(express.static('public'));
 
 app.post('/submit_redirect', function (req, res) {
@@ -18,9 +20,21 @@ app.post('/submit_redirect', function (req, res) {
 
     })
 
-var server = app.listen(3000, function () {
-    var host = server.address().address
-    var port = server.address().port
-    console.log("Example app listening at http://%s:%s", host, port)
+io.on('connection', function(socket){
+    console.log('a user connected');
+    
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
 
-    })
+    socket.on('update', function(text){
+        console.log('text: ' + text);
+        io.emit('update', text);
+    });
+});
+
+http.listen(3000, function () {
+    console.log("App running at localhost:3000");
+});
+
+
